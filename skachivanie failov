@@ -1,0 +1,30 @@
+using System;
+using System.Net;
+
+class Program
+{
+    static void Main()
+    {
+        // Создаем экземпляр WebClient для скачивания файла
+        using (WebClient client = new WebClient())
+        {
+            // URL файла, который мы будем скачивать
+            string fileUrl = "https://disk.yandex.ru/edit/d/2SvlBDadFs-cqMG0Bmi-ViPegnqahzm72s0qoIz-cKg6ZU5YcGktdno3Zw?source=docs&sk=yb969ba8962df8adc68824c58c2e3e0cf";  // Замените на URL вашего файла
+
+            // Путь на компьютере, куда файл будет сохранен
+            string savePath = @"C:\Users\Марат\OneDrive\Документы\скачавшиеся файлы.docx"; // Замените на путь, куда хотите сохранить файл
+
+            try
+            {
+                // Загрузка файла
+                client.DownloadFile(fileUrl, savePath);
+                Console.WriteLine($"Файл успешно скачан и сохранен по пути: {savePath}");
+            }
+            catch (Exception ex)
+            {
+                // Обработка ошибок
+                Console.WriteLine($"Произошла ошибка: {ex.Message}");
+            }
+        }
+    }
+}
